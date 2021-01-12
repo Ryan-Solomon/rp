@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const List = (data) => {
+const List = ({ data }) => {
   return (
     <SContainer>
       <SImage src={data.image} />
