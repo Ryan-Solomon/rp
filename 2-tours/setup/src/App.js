@@ -34,7 +34,7 @@ function App() {
     getTours();
   }, []);
 
-  return <Tour tour={tourOne} />;
+  return tours.length > 0 ? <Tours data={tours} /> : <Loading />;
 }
 
 export default App;

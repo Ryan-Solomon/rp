@@ -33,6 +33,7 @@ const STourContainer = styled.div`
   width: 60vw;
   height: 60vh;
   background: white;
+  margin: 100px;
 `;
 
 const SContent = styled.div`
