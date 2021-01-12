@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Tour = ({ tour }) => {
+const Tour = ({ tour, removeTour }) => {
   const [showMore, setShowMore] = React.useState(false);
 
-  const { image, info, name, price } = tour;
+  const { image, info, name, price, id } = tour;
   return (
     <STourContainer>
       <SImage src={image} />
@@ -19,7 +19,7 @@ const Tour = ({ tour }) => {
         <button onClick={() => setShowMore(!showMore)}>
           {showMore ? 'Read Less' : 'Read More'}
         </button>
-        <button>Not Interested</button>
+        <button onClick={() => removeTour(id)}>Not Interested</button>
       </SContent>
     </STourContainer>
   );

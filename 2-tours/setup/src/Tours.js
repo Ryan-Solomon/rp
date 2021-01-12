@@ -1,10 +1,10 @@
 import React from 'react';
 import Tour from './Tour';
-const Tours = ({ data }) => {
+const Tours = ({ data, removeTour }) => {
   return (
     <>
       {data.map((tour) => {
-        return <Tour key={tour.id} tour={tour} />;
+        return <Tour removeTour={removeTour} key={tour.id} tour={tour} />;
       })}
     </>
   );

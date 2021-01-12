@@ -19,6 +19,11 @@ function App() {
   const [tours, setTours] = React.useState([]);
   const [status, setStatus] = React.useState('idle');
 
+  const removeTour = (id) => {
+    const newTours = tours.filter((tour) => tour.id !== id);
+    setTours(newTours);
+  };
+
   React.useEffect(() => {
     const getTours = async () => {
       setStatus('loading');
@@ -34,7 +39,11 @@ function App() {
     getTours();
   }, []);
 
-  return tours.length > 0 ? <Tours data={tours} /> : <Loading />;
+  return tours.length > 0 ? (
+    <Tours removeTour={removeTour} data={tours} />
+  ) : (
+    <Loading />
+  );
 }
 
 export default App;
