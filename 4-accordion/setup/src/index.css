@@ -125,11 +125,6 @@ p {
 /*  global classes */
 
 /* section */
-.section {
-  width: 90vw;
-  margin: 0 auto;
-  max-width: var(--max-width);
-}
 
 @media screen and (min-width: 992px) {
   .section {
@@ -142,14 +137,6 @@ p {
 Questions
 ===============
 */
-
-main {
-  min-height: 100vh;
-  /* using flex because of better browser support */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .container {
   width: 90vw;

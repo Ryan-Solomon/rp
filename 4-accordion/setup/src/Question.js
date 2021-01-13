@@ -9,9 +9,9 @@ const q = {
     'Unicorn vinyl poutine brooklyn, next level direct trade iceland. Shaman copper mug church-key coloring book, whatever poutine normcore fixie cred kickstarter post-ironic street art.',
 };
 
-const Question = () => {
+const Question = ({ question }) => {
   const [show, setShow] = React.useState(false);
-  const { id, title, info } = q;
+  const { id, title, info } = question;
 
   return (
     <SQuestionContainer>
@@ -32,7 +32,9 @@ const Question = () => {
 
 export default Question;
 
-const SQuestionContainer = styled.section``;
+const SQuestionContainer = styled.section`
+  margin: 20px;
+`;
 
 const TitleAndButton = styled.section`
   display: flex;
