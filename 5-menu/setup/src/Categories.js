@@ -6,7 +6,7 @@ const Categories = ({ items }) => {
 
   React.useEffect(() => {
     const categories = items.map((item) => item.category);
-    const uniqueCategories = Array.from(new Set(categories));
+    const uniqueCategories = Array.from(new Set([...categories, 'all'].sort()));
     setCategories(uniqueCategories);
   }, [items]);
 
@@ -26,4 +26,8 @@ const SCategoriesContainer = styled.ul`
   display: flex;
 `;
 
-const SCategory = styled.li``;
+const SCategory = styled.li`
+  font-size: 20px;
+  margin: 0 10px;
+  color: teal;
+`;
