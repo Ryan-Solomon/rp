@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
 import styled from 'styled-components';
 
-const Review = ({ person, setIdx }) => {
+const Review = ({ person, setIdx, surpriseIdx }) => {
   const { image, name, job, text } = person;
   return (
     <SContainer>
@@ -18,7 +18,7 @@ const Review = ({ person, setIdx }) => {
           <FaChevronRight size={30} />
         </SButton>
       </SButtonContainer>
-      <SButton>Surprise Me</SButton>
+      <SButton onClick={surpriseIdx}>Surprise Me</SButton>
     </SContainer>
   );
 };

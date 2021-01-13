@@ -10,6 +10,11 @@ function App() {
     setPerson(peopleData[currentPersonIdx]);
   }, [currentPersonIdx]);
 
+  const surpriseIdx = () => {
+    const surprise = Math.floor(Math.random() * peopleData.length);
+    setCurrentPersonIdx(surprise);
+  };
+
   const setIdx = (direction) => {
     if (direction === 'FORWARD') {
       if (currentPersonIdx === peopleData.length - 1) {
@@ -29,7 +34,7 @@ function App() {
   return (
     <>
       <h1>Our Reviews</h1>
-      <Review person={person} setIdx={setIdx} />
+      <Review person={person} surpriseIdx={surpriseIdx} setIdx={setIdx} />
     </>
   );
 }
