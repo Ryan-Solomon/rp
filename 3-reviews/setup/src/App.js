@@ -10,17 +10,26 @@ function App() {
     setPerson(peopleData[currentPersonIdx]);
   }, [currentPersonIdx]);
 
-  const setIdx = () => {
-    if (currentPersonIdx === peopleData.length - 1) {
-      setCurrentPersonIdx(0);
-    } else {
-      setCurrentPersonIdx((i) => i + 1);
+  const setIdx = (direction) => {
+    if (direction === 'FORWARD') {
+      if (currentPersonIdx === peopleData.length - 1) {
+        setCurrentPersonIdx(0);
+      } else {
+        setCurrentPersonIdx((i) => i + 1);
+      }
+    } else if (direction === 'BACKWARD') {
+      if (currentPersonIdx === 0) {
+        setCurrentPersonIdx(peopleData.length - 1);
+      } else {
+        setCurrentPersonIdx((i) => i - 1);
+      }
     }
   };
 
   return (
     <>
       <h1>Our Reviews</h1>
+      <Review person={person} setIdx={setIdx} />
     </>
   );
 }

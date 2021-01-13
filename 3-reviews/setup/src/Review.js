@@ -2,18 +2,8 @@ import React, { useState } from 'react';
 import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
 import styled from 'styled-components';
 
-const whoever = {
-  id: 4,
-  name: 'bill anderson',
-  job: 'the boss',
-  image:
-    'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883423/person-4_t9nxjt.jpg',
-  text:
-    'Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ',
-};
-
-const Review = () => {
-  const { image, name, job, text } = whoever;
+const Review = ({ person, setIdx }) => {
+  const { image, name, job, text } = person;
   return (
     <SContainer>
       <SImage src={image} />
@@ -21,10 +11,10 @@ const Review = () => {
       <h4>{job}</h4>
       <p>{text}</p>
       <SButtonContainer>
-        <SButton>
+        <SButton onClick={() => setIdx('BACKWARD')}>
           <FaChevronLeft size={30} />
         </SButton>
-        <SButton>
+        <SButton onClick={() => setIdx('FORWARD')}>
           <FaChevronRight size={30} />
         </SButton>
       </SButtonContainer>
