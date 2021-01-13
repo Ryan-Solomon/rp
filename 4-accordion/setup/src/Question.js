@@ -15,19 +15,45 @@ const Question = () => {
 
   return (
     <SQuestionContainer>
-      <h4>{title}</h4>
-      {show && <p>{info}</p>}
-      {show ? <AiOutlineMinus /> : <AiOutlinePlus />}
+      <TitleAndButton>
+        <h4>{title}</h4>
+        <SButton onClick={() => setShow(!show)}>
+          {show ? <AiOutlineMinus /> : <AiOutlinePlus />}
+        </SButton>
+      </TitleAndButton>
+      {show && (
+        <InfoContainer>
+          <p>{info}</p>
+        </InfoContainer>
+      )}
     </SQuestionContainer>
   );
 };
 
 export default Question;
 
-const SQuestionContainer = styled.section`
+const SQuestionContainer = styled.section``;
+
+const TitleAndButton = styled.section`
   display: flex;
   box-shadow: 2px 2px 10px grey;
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
+  padding: 15px;
+`;
+
+const InfoContainer = styled.section`
+  background-color: #fff;
+  padding: 15px;
+`;
+
+const SButton = styled.button`
+  background: grey;
+  border-radius: 50%;
+  border: none;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  margin-right: 15px;
 `;
