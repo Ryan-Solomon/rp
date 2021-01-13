@@ -20,6 +20,15 @@ const Review = () => {
       <h2>{name}</h2>
       <h4>{job}</h4>
       <p>{text}</p>
+      <SButtonContainer>
+        <SButton>
+          <FaChevronLeft size={30} />
+        </SButton>
+        <SButton>
+          <FaChevronRight size={30} />
+        </SButton>
+      </SButtonContainer>
+      <SButton>Surprise Me</SButton>
     </SContainer>
   );
 };
@@ -41,4 +50,17 @@ const SImage = styled.img`
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
+`;
+
+const SButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 4rem;
+  margin-bottom: 20px;
+`;
+
+const SButton = styled.button`
+  background: none;
+  outline: none;
+  border: none;
 `;
