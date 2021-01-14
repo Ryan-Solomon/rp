@@ -7,7 +7,7 @@ function App() {
   const [menuItems, setMenuItems] = React.useState(items);
 
   const updateMenuItems = (category) => {
-    if (category === 'ALL') {
+    if (category === 'all') {
       setMenuItems(items);
     } else {
       const newItems = items.filter((item) => item.category === category);
@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <h1>Our Menu</h1>
-      <Categories updateMenuItems={updateMenuItems} items={menuItems} />
+      <Categories updateMenuItems={updateMenuItems} items={items} />
       <Menu items={menuItems} />
     </>
   );

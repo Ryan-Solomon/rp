@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Categories = ({ items }) => {
+const Categories = ({ items, updateMenuItems }) => {
   const [categories, setCategories] = React.useState([]);
 
   React.useEffect(() => {
@@ -14,7 +14,11 @@ const Categories = ({ items }) => {
     <SCategoriesContainer>
       {categories.length > 0 &&
         categories.map((category) => {
-          return <SCategory key={category}>{category}</SCategory>;
+          return (
+            <SButton key={category} onClick={() => updateMenuItems(category)}>
+              <SCategory>{category}</SCategory>
+            </SButton>
+          );
         })}
     </SCategoriesContainer>
   );
@@ -24,6 +28,12 @@ export default Categories;
 
 const SCategoriesContainer = styled.ul`
   display: flex;
+`;
+
+const SButton = styled.button`
+  background: none;
+  border: none;
+  outline: none;
 `;
 
 const SCategory = styled.li`
