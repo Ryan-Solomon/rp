@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaAngleDoubleRight } from 'react-icons/fa';
+import { UserInfo } from './UserInfo';
+import styled from 'styled-components';
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
 const url = 'https://course-api.com/react-tabs-project';
@@ -22,9 +24,18 @@ function App() {
     getData();
   }, []);
 
-  console.log(info);
+  if (status !== 'fulfilled') return <h1>whatever</h1>;
 
-  return <h2>tabs project setup</h2>;
+  return (
+    <SContainer>
+      <h1>Experience</h1>
+      <UserInfo info={info[0]} />
+    </SContainer>
+  );
 }
 
 export default App;
+
+const SContainer = styled.main`
+  padding: 2rem;
+`;
