@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Slider = () => {
+export const Slider = ({ info }) => {
+  const { image, name, quote, title } = info;
   return (
     <SContainer>
-      <SImage />
-      <SName></SName>
-      <SRole></SRole>
-      <SInfo></SInfo>
+      <SImage src={image} />
+      <SName>{name}</SName>
+      <SRole>{title}</SRole>
+      <SInfo>{quote}</SInfo>
     </SContainer>
   );
 };
@@ -23,3 +24,11 @@ const SImage = styled.img`
   object-fit: cover;
   border-radius: 50%;
 `;
+
+const SName = styled.h2`
+  color: teal;
+`;
+
+const SRole = styled.h3``;
+
+const SInfo = styled.p``;
