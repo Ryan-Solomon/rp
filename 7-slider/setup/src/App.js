@@ -8,6 +8,22 @@ function App() {
   const [currentPersonId, setCurrentPersonId] = React.useState(1);
   console.log(data);
 
+  const handleIdChange = (direction) => {
+    if (direction === 'RIGHT') {
+      if (currentPersonId === data.length - 1) {
+        setCurrentPersonId(1);
+      } else {
+        setCurrentPersonId((i) => i + 1);
+      }
+    } else {
+      if (currentPersonId === 1) {
+        setCurrentPersonId(data.length - 1);
+      } else {
+        setCurrentPersonId((i) => i - 1);
+      }
+    }
+  };
+
   return (
     <SContainer>
       {data.map((info) => {
@@ -16,11 +32,11 @@ function App() {
         );
       })}
       <SIconContainer>
-        <SButton>
-          <FiChevronLeft />
+        <SButton onClick={() => handleIdChange('LEFT')}>
+          <FiChevronLeft size={30} />
         </SButton>
-        <SButton>
-          <FiChevronRight />
+        <SButton onClick={() => handleIdChange('RIGHT')}>
+          <FiChevronRight size={30} />
         </SButton>
       </SIconContainer>
     </SContainer>
