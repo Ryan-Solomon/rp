@@ -16,6 +16,9 @@ export const Slider = ({ info }) => {
 const SContainer = styled.section`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 70vw;
+  margin: auto;
 `;
 
 const SImage = styled.img`
