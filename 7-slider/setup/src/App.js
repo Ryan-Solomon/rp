@@ -6,18 +6,30 @@ import data from './data';
 import { Slider } from './Slider';
 function App() {
   const [currentPersonId, setCurrentPersonId] = React.useState(1);
-  console.log(data);
+
+  React.useEffect(() => {
+    if (localStorage.getItem('id')) {
+      setCurrentPersonId(parseInt(localStorage.getItem('id')));
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (localStorage.getItem('id')) {
+      localStorage.removeItem('id');
+    }
+    localStorage.setItem('id', currentPersonId);
+  }, [currentPersonId]);
 
   const handleIdChange = (direction) => {
     if (direction === 'RIGHT') {
-      if (currentPersonId === data.length - 1) {
+      if (currentPersonId === data.length) {
         setCurrentPersonId(1);
       } else {
         setCurrentPersonId((i) => i + 1);
       }
     } else {
       if (currentPersonId === 1) {
-        setCurrentPersonId(data.length - 1);
+        setCurrentPersonId(data.length);
       } else {
         setCurrentPersonId((i) => i - 1);
       }
