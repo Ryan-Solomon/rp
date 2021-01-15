@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Slider = ({ info }) => {
-  const { image, name, quote, title } = info;
+export const Slider = ({ info, currentPersonId }) => {
+  const { image, name, quote, title, id } = info;
   return (
-    <SContainer>
+    <SContainer style={{ display: currentPersonId === id ? 'flex' : 'none' }}>
       <SImage src={image} />
       <SName>{name}</SName>
       <SRole>{title}</SRole>
