@@ -28,8 +28,9 @@ function App() {
         <button onClick={addItem}>Add</button>
         {list.length > 0 &&
           list.map((item) => {
-            return <h1 key={item.id}>{item.text}</h1>;
+            return <List item={item} key={item.id} />;
           })}
+        <button onClick={() => setList([])}>Clear</button>
       </SGroceryContainer>
     </SAppContainer>
   );
