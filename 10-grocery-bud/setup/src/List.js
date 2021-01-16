@@ -1,13 +1,13 @@
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import styled from 'styled-components';
-const List = ({ item }) => {
+const List = ({ item, removeItem }) => {
   return (
     <SItemContainer>
       <h2>{item.text}</h2>
       <SBtnContainer>
         <FaEdit />
-        <FaTrash />
+        <FaTrash onClick={() => removeItem(item.id)} />
       </SBtnContainer>
     </SItemContainer>
   );

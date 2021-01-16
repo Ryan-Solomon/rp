@@ -13,6 +13,11 @@ function App() {
     setCurrentItem('');
   };
 
+  const removeItem = (id) => {
+    const filteredItems = list.filter((item) => item.id !== id);
+    setList(filteredItems);
+  };
+
   return (
     <SAppContainer>
       <SGroceryContainer>
@@ -28,7 +33,7 @@ function App() {
         <button onClick={addItem}>Add</button>
         {list.length > 0 &&
           list.map((item) => {
-            return <List item={item} key={item.id} />;
+            return <List removeItem={removeItem} item={item} key={item.id} />;
           })}
         <button onClick={() => setList([])}>Clear</button>
       </SGroceryContainer>
