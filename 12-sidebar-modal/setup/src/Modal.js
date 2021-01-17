@@ -1,8 +1,9 @@
 import React from 'react';
-import { FaTimes } from 'react-icons/fa';
 import styled from 'styled-components';
 
 const Modal = () => {
+  const [showContent, setShowContent] = React.useState(false);
+
   return (
     <SModalContainer>
       <SModalButton>
