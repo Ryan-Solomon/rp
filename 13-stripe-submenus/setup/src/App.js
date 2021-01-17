@@ -1,14 +1,19 @@
-import React from 'react'
-import Navbar from './Navbar'
-import Hero from './Hero'
-import Sidebar from './Sidebar'
-import Submenu from './Submenu'
+import React from 'react';
+import Navbar from './Navbar';
+import styled from 'styled-components';
+
 function App() {
   return (
-    <>
-      <h2>stripe submenus setup</h2>
-    </>
-  )
+    <AppBackground>
+      <Navbar />
+    </AppBackground>
+  );
 }
 
-export default App
+export default App;
+
+const AppBackground = styled.div`
+  background: #222;
+  height: 100vh;
+  width: 100vw;
+`;
