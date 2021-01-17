@@ -39,8 +39,6 @@ const LinksContainer = styled.ul`
   display: flex;
 `;
 
-const ListItem = styled.li``;
-
 const SignInButton = styled.button`
   background: #fff;
   color: #222;
