@@ -15,6 +15,9 @@ const Navbar = () => {
           return <NavItem key={item.page} item={item} />;
         })}
       </LinksContainer>
+      <SignInButton>
+        <ButtonText>Sign In</ButtonText>
+      </SignInButton>
     </NavContainer>
   );
 };
@@ -23,6 +26,9 @@ export default Navbar;
 
 const NavContainer = styled.nav`
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem;
 `;
 
 const LogoImage = styled.img`
@@ -34,3 +40,11 @@ const LinksContainer = styled.ul`
 `;
 
 const ListItem = styled.li``;
+
+const SignInButton = styled.button`
+  background: #fff;
+  color: #222;
+  padding: 10px;
+`;
+
+const ButtonText = styled.h4``;
