@@ -1,8 +1,32 @@
-import React, { useContext } from 'react'
-import { FaBars } from 'react-icons/fa'
+import React from 'react';
+import { FaBars } from 'react-icons/fa';
+import Modal from './Modal';
+import styled from 'styled-components';
+import Sidebar from './Sidebar';
 
 const Home = () => {
-  return <h2>home component</h2>
-}
+  const [showSidebar, setShowSidebar] = React.useState(true);
 
-export default Home
+  return (
+    <SHomeContainer>
+      {showSidebar && <Sidebar hideSidebar={() => setShowSidebar(false)} />}
+
+      <SIconContainer>
+        {!showSidebar && <FaBars onClick={() => setShowSidebar(true)} />}
+      </SIconContainer>
+      <Modal />
+    </SHomeContainer>
+  );
+};
+
+export default Home;
+
+const SHomeContainer = styled.div`
+  position: relative;
+`;
+
+const SIconContainer = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 20px;
+`;
