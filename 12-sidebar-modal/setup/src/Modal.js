@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ModalContent } from './ModalContent';
 
 const Modal = () => {
   const [showContent, setShowContent] = React.useState(false);
 
+  if (showContent) {
+    return <ModalContent hideModal={() => setShowContent(false)} />;
+  }
+
   return (
     <SModalContainer>
-      <SModalButton>
+      <SModalButton onClick={() => setShowContent(true)}>
         <SModalText>Show Modal</SModalText>
       </SModalButton>
     </SModalContainer>
