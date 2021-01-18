@@ -1,11 +1,13 @@
 import React from 'react';
 import Navbar from './Navbar';
+import { NavModal } from './NavModal';
 import styled from 'styled-components';
 
 function App() {
   return (
     <AppBackground>
       <Navbar />
+      <NavModal />
     </AppBackground>
   );
 }
