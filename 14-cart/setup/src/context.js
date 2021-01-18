@@ -5,6 +5,10 @@ import reducer from './reducer';
 const url = 'https://course-api.com/react-useReducer-cart-project';
 const AppContext = React.createContext();
 
+const cartReducer = (state, action) => {
+  // Increase item, decrease item, clear cart
+};
+
 const AppProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [status, setStatus] = useState('idle');
