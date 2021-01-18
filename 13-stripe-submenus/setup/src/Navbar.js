@@ -4,8 +4,10 @@ import styled from 'styled-components';
 import logo from './images/logo.svg';
 import { useAppContext } from './context';
 import { FaBars } from 'react-icons/fa';
+import { NavModal } from './NavModal';
 
 const Navbar = () => {
+  const [showModal, setShowModal] = React.useState(false);
   const { links } = useAppContext();
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 
@@ -15,6 +17,8 @@ const Navbar = () => {
 
     return () => window.removeEventListener('resize', setWidth);
   }, []);
+
+  if (showModal) return <NavModal hideModal={() => setShowModal(false)} />;
 
   return (
     <NavContainer>
@@ -31,7 +35,7 @@ const Navbar = () => {
           </SignInButton>
         </>
       ) : (
-        <FaBars color='white' size={34} />
+        <FaBars onClick={() => setShowModal(true)} color='white' size={34} />
       )}
     </NavContainer>
   );

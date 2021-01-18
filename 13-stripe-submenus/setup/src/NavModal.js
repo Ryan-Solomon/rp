@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { useAppContext } from './context';
 import { ModalCategory } from './ModalCategory';
 
-export const NavModal = () => {
+export const NavModal = ({ hideModal }) => {
   const { links } = useAppContext();
   return (
     <ModalContainer>
-      <ModalX>X</ModalX>
+      <ModalX onClick={hideModal}>X</ModalX>
       {links.map((link) => {
         return <ModalCategory key={link.page} data={link} />;
       })}
