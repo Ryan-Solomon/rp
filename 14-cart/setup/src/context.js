@@ -4,25 +4,28 @@ const AppContext = React.createContext();
 
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
-    const item = state.filter((product) => product.id === action.payload);
-    item.amount += 1;
-    return [...state.filter((prod) => prod.id !== action.payload), item];
-  } else if (action.type === 'REMOVE') {
-    let item;
-    const newItems = state.filter((prod) => {
-      if (prod.id === action.payload) {
-        item = prod;
-        return false;
+    const newItems = [...state].map(({ ...item }) => {
+      if (item.id === action.payload) {
+        item.amount = item.amount + 1;
+        return { ...item };
       } else {
-        return true;
+        return { ...item };
       }
     });
-    item.amount -= 1;
-    let addThis = newItems.slice();
-    if (item.amount > 0) {
-      addThis = [...newItems, item];
-    }
-    return addThis;
+    return newItems;
+  } else if (action.type === 'REMOVE') {
+    const items = [...state].map(({ ...item }) => {
+      if (item.id === action.payload) {
+        console.log(item.amount);
+        item.amount -= 1;
+        if (item.amount !== 0) {
+          return { ...item };
+        }
+      } else {
+        return { ...item };
+      }
+    });
+    return items.filter((item) => item);
   } else if (action.type === 'SET') {
     return [...action.payload];
   } else if (action.type === 'CLEAR') {
