@@ -4,6 +4,15 @@ import { useGlobalContext } from './context';
 
 const CartContainer = () => {
   const { cart, clearItems } = useGlobalContext();
+  const [cartTotal, setCartTotal] = React.useState(0);
+
+  React.useEffect(() => {
+    const totalPrice = cart.reduce((acc, item) => {
+      return acc + item.amount * item.price;
+    }, 0);
+    setCartTotal(totalPrice);
+  }, [cart]);
+
   if (cart.length === 0) {
     return (
       <section className='cart'>
@@ -32,7 +41,7 @@ const CartContainer = () => {
         <hr />
         <div className='cart-total'>
           <h4>
-            total <span>$0.00</span>
+            total <span>{cartTotal.toFixed(2)}</span>
           </h4>
         </div>
         <button className='btn clear-btn' onClick={clearItems}>
