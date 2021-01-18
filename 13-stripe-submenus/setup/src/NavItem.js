@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavDropDown } from './NavDropDown';
+import { NavDropDown, DropDownContainer } from './NavDropDown';
 
 export const NavItem = ({ item }) => {
   const { page, links } = item;
@@ -21,7 +21,9 @@ const NavPage = styled.h2`
 `;
 
 const NavItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   position: relative;
+
+  &:hover ${DropDownContainer} {
+    display: flex;
+  }
 `;

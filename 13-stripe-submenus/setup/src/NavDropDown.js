@@ -12,9 +12,14 @@ export const NavDropDown = ({ links }) => {
   );
 };
 
-const DropDownContainer = styled.div`
+export const DropDownContainer = styled.div`
   position: absolute;
-  top: 40px;
-  display: flex;
+  top: 0px;
+  padding-top: 30px;
+  display: none;
   flex-direction: column;
+
+  &:hover {
+    display: flex;
+  }
 `;
