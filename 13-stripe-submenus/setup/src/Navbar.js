@@ -7,17 +7,32 @@ import { FaBars } from 'react-icons/fa';
 
 const Navbar = () => {
   const { links } = useAppContext();
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  React.useEffect(() => {
+    const setWidth = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', setWidth);
+
+    return () => window.removeEventListener('resize', setWidth);
+  }, []);
+
   return (
     <NavContainer>
       <LogoImage src={logo} alt='logo' />
-      <LinksContainer>
-        {links.map((item) => {
-          return <NavItem key={item.page} item={item} />;
-        })}
-      </LinksContainer>
-      <SignInButton>
-        <ButtonText>Sign In</ButtonText>
-      </SignInButton>
+      {windowWidth > 600 ? (
+        <>
+          <LinksContainer>
+            {links.map((item) => {
+              return <NavItem key={item.page} item={item} />;
+            })}
+          </LinksContainer>
+          <SignInButton>
+            <ButtonText>Sign In</ButtonText>
+          </SignInButton>
+        </>
+      ) : (
+        <FaBars color='white' size={34} />
+      )}
     </NavContainer>
   );
 };
