@@ -1,7 +1,4 @@
 import React, { useState, useContext, useReducer, useEffect } from 'react';
-import reducer from './reducer';
-// ATTENTION!!!!!!!!!!
-// I SWITCHED TO PERMANENT DOMAIN
 const url = 'https://course-api.com/react-useReducer-cart-project';
 const AppContext = React.createContext();
 
@@ -28,6 +25,8 @@ const cartReducer = (state, action) => {
     return addThis;
   } else if (action.type === 'SET') {
     return [...action.payload];
+  } else if (action.type === 'CLEAR') {
+    return [];
   } else {
     throw new Error('Action not supported');
   }
@@ -58,6 +57,9 @@ const AppProvider = ({ children }) => {
   const removeItem = (id) => {
     dispatch({ type: 'REMOVE', payload: id });
   };
+  const clearItems = () => {
+    dispatch({ type: 'CLEAR' });
+  };
 
   return (
     <AppContext.Provider
@@ -66,13 +68,14 @@ const AppProvider = ({ children }) => {
         status,
         addItem,
         removeItem,
+        clearItems,
       }}
     >
       {children}
     </AppContext.Provider>
   );
 };
-// make sure use
+
 export const useGlobalContext = () => {
   return useContext(AppContext);
 };
