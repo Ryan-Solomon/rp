@@ -10,7 +10,7 @@ const cartReducer = (state, action) => {
     const item = state.filter((product) => product.id === action.payload);
     item.amount += 1;
     return [...state.filter((prod) => prod.id !== action.payload), item];
-  } else if (action.type === 'DECREASE') {
+  } else if (action.type === 'REMOVE') {
     let item;
     const newItems = state.filter((prod) => {
       if (prod.id === action.payload) {
@@ -32,7 +32,7 @@ const cartReducer = (state, action) => {
 };
 
 const AppProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, dispatch] = useReducer(cartReducer, []);
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
@@ -50,11 +50,20 @@ const AppProvider = ({ children }) => {
     getItems();
   }, []);
 
+  const addItem = (id) => {
+    dispatch({ type: 'ADD', payload: id });
+  };
+  const removeItem = (id) => {
+    dispatch({ type: 'REMOVE', payload: id });
+  };
+
   return (
     <AppContext.Provider
       value={{
         cart,
         status,
+        addItem,
+        removeItem,
       }}
     >
       {children}
