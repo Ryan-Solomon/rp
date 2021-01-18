@@ -26,6 +26,8 @@ const cartReducer = (state, action) => {
       addThis = [...newItems, item];
     }
     return addThis;
+  } else if (action.type === 'SET') {
+    return [...action.payload];
   } else {
     throw new Error('Action not supported');
   }
@@ -41,7 +43,7 @@ const AppProvider = ({ children }) => {
       try {
         const res = await fetch(url);
         const data = await res.json();
-        setCart(data);
+        dispatch({ type: 'SET', payload: data });
         setStatus('fulfilled');
       } catch (e) {
         setStatus('error');
