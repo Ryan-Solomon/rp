@@ -6,7 +6,29 @@ const url = 'https://course-api.com/react-useReducer-cart-project';
 const AppContext = React.createContext();
 
 const cartReducer = (state, action) => {
-  // Increase item, decrease item, clear cart
+  if (action.type === 'ADD') {
+    const item = state.filter((product) => product.id === action.payload);
+    item.amount += 1;
+    return [...state.filter((prod) => prod.id !== action.payload), item];
+  } else if (action.type === 'DECREASE') {
+    let item;
+    const newItems = state.filter((prod) => {
+      if (prod.id === action.payload) {
+        item = prod;
+        return false;
+      } else {
+        return true;
+      }
+    });
+    item.amount -= 1;
+    let addThis = newItems.slice();
+    if (item.amount > 0) {
+      addThis = [...newItems, item];
+    }
+    return addThis;
+  } else {
+    throw new Error('Action not supported');
+  }
 };
 
 const AppProvider = ({ children }) => {
